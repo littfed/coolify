@@ -130,6 +130,7 @@ class StartSentinel
             'COLLECTOR_ENABLED' => $server->isMetricsEnabled() ? 'true' : 'false',
             'COLLECTOR_REFRESH_RATE_SECONDS' => $refreshRate,
             'COLLECTOR_RETENTION_PERIOD_DAYS' => $metricsHistory,
+            'STORAGE_VOLUMES_ENABLED' => 'false',
         ];
         $environments = array_merge($environments, self::sentinelTrafficEnvironment($server));
         $labels = [

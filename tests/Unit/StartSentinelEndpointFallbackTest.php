@@ -31,3 +31,9 @@ test('local sentinel joins the Coolify network and waits for an authenticated pu
         ->toContain("sentinel_waiting_since' => now()")
         ->not->toContain('$server->sentinelHeartbeat();');
 });
+
+test('sentinel startup disables storage volume collection to prevent unmounted host path errors', function () {
+    $action = file_get_contents(dirname(__DIR__, 2).'/app/Actions/Server/StartSentinel.php');
+
+    expect($action)->toContain("'STORAGE_VOLUMES_ENABLED' => 'false'");
+});
